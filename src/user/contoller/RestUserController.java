@@ -18,7 +18,7 @@ public class RestUserController {
 	@Autowired
 	UserService userService;
 	
-	// http://localhost:8080/Test/users/shlee0882
+	// http://localhost:8080/SpringDefaultSetting/users/shlee0882
 	// 특정 조회
 	@RequestMapping(value="/users/{id}", method=RequestMethod.GET)
 	public UserVO getUser(@PathVariable String id) { // {id} 와 String id를 위해 pathVariable
@@ -33,7 +33,7 @@ public class RestUserController {
 	
 	// 등록
 	// postman 사용시 [{"key":"Content-Type","value":"application/json"}] 설정
-	/* POST http://localhost:8080/Test/users
+	/* POST http://localhost:8080/SpringDefaultSetting/users
 		{
 		    "userId": "shlee04",
 		    "name": "이상현",
