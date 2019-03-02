@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+
+	<context:component-scan base-package="user" />
+
+	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+		<property name="dataSource" ref="dbInfo55" />
+		<property name="configLocation" value="classpath:config/SqlMapConfig.xml"/>
+		<property name="mapperLocations">
+			<list>
+				<value>classpath:config/*Mapper.xml</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate">
+		<constructor-arg ref="sqlSessionFactory" />	
+	</bean>
+	
+	<!--  properties file 설정 -->
+	<context:property-placeholder location="classpath:config/db.properties"/>
+
+	<bean id="dbInfo55" class="org.apache.commons.dbcp2.BasicDataSource"
+		p:driverClassName="${db.driver.55}"
+		p:url="${db.url.55}"
+		p:username="${db.username.55}"
+		p:password="${db.password.55}"
+	/>
+	
+	<bean id="dbInfo60" class="org.apache.commons.dbcp2.BasicDataSource"
+		p:driverClassName="${db.driver.60}"
+		p:url="${db.url.60}"
+		p:username="${db.username.60}"
+		p:password="${db.password.60}"
+	/>
+	
+</beans>
